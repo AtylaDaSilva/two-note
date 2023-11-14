@@ -1,9 +1,21 @@
+//React
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './css/index.css';
+
+//Components
 import App from './components/App';
+
+//Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+//CSS
+import './css/index.css';
+
+//WebVitals
 import reportWebVitals from './tests/reportWebVitals';
 
+
+//Render
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

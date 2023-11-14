@@ -1,0 +1,36 @@
+.Sidebar {
+    height: 100%;
+    width: 100%;
+    padding: 30px 0px 0px 0px;
+}
+
+.Sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Sidebar-title {
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.add-note-btn {
+    margin-left: 10px;
+}
+
+.Sidebar-note {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 70px;
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+    padding: 0px 20px 0px 20px;
+}
+
+.note-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #fff;
+}
