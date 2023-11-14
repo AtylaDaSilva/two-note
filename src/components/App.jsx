@@ -6,6 +6,7 @@ import Toolbar from './toolbar/Toolbar'; //=================== TODO
 import Split from 'react-split';
 import Sidebar from './sidebar/Sidebar';
 import Editor from './editor/Editor';
+import NoNotes from './editor/NoNotes';
 
 //CSS
 import '../css/App.css';
@@ -115,7 +116,11 @@ export default function App() {
             <Sidebar notes={notes} callbacks={ callbacks } />
           </aside>
           <main className='App-main'>
-            <Editor currentNote={currentNote} callbacks={ callbacks } />
+            {
+              (notes.length > 0)
+                ? <Editor currentNote={currentNote} callbacks={callbacks} />
+                : <NoNotes handleCreateNoteButtonClick={ createNewNote } />
+            }
           </main>
         </Split>
       </div>
