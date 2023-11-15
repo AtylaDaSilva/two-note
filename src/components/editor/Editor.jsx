@@ -2,7 +2,7 @@
 import React from 'react';
 
 //ReactMDE
-import ReactMde, { TextArea } from 'react-mde';
+import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/css/react-mde-all.css';
 
@@ -18,7 +18,7 @@ const converter = new Showdown.Converter({
 });
 
 export default function Editor(props) {
-    //State
+    // Write/Preview state. Starts as "write" by default.
     const [selectedTab, setSelectedTab] = React.useState("write");
 
     //Render

@@ -1,5 +1,10 @@
+//React
 import React from 'react'
+
+//React Bootstrap components
 import { Button } from 'react-bootstrap';
+
+//CSS
 import '../../css/editor/NoNotes.css';
 
 export default function NoNotes(props) {

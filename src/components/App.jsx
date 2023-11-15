@@ -13,6 +13,8 @@ import '../css/App.css';
 import '../css/split.css';
 
 export default function App() {
+  /** Creates a new Note object and sets it as the current note.
+   */
   function createNewNote() {
     setNotes(currentState => {
       let newState = [...currentState];
@@ -31,6 +33,10 @@ export default function App() {
     });
   }
 
+  /**
+   * Deletes a note and, if the deleted note is the current note, changes the current note to the first note in the notes state.
+   * @param {*} noteIndex The index of the note object to be deleted.
+   */
   function deleteNote(noteIndex) { 
     setNotes(currentState => { 
       let newState = [];
@@ -50,9 +56,13 @@ export default function App() {
     });
   }
 
+  /**
+   * Updates the note's body and title with whatever the user typed in the editor. The note's title is the first line of the editor.
+   * @param {*} text Text typed into the editor. This param is received from the onChange prop of the ReactMDE component.
+   */
   function updateNote(text) {
     const currentNote = getCurrentNote();
-    //newNoteTitle will be the first line of text, excluding any markdown characters (e.g.: #, *)
+    //newNoteTitle will be the first line of text, excluding any markdown characters or accentuation (e.g.: #, *, ~)
     const newNoteTitle = removeSpecialCharacters(text.split("\n")[0]);
 
     setNotes(currentState => {
@@ -64,31 +74,56 @@ export default function App() {
     updateCurrentNote({ ...currentNote, body: text, title: (newNoteTitle || "New Note") });
   }
 
+  /**
+   * Returns true if the note is the current note, false otherwise.
+   * @param {*} note Note object
+   * @returns Boolean
+   */
   function isCurrentNote(note) { 
     return note === currentNote;
   }
 
+  /**
+   * Returns the current note object
+   * @returns currentNote object
+   */
   function getCurrentNote() { 
     return currentNote;
   }
 
+  /**
+   * Updates the current note object.
+   * @param {*} note The new current note object
+   */
   function updateCurrentNote(note) {
     setCurrentNote(note);
   }
 
+  /**
+   * Removes any accentuation or markdown characters from text. 
+   * @param {*} text The string of text to remove special characters.
+   * @returns String of text without any special charactes.
+   */
   function removeSpecialCharacters(text) { 
-    const search = /[\u0300-\u036f]|[#*^~´`'"!?/\\|@$%¨&()\-_=+<>,.;:\[\]\{\}\º§¬¢£³²¹ª₢]/g;
+    const search = /[\u0300-\u036f]|[#*^~´`'"!?/\\|@$%¨&()\-_=+<>,.;:\[\]\{\}\º§¬¢£³²¹ª₢]/g; //Regexp with gobal flag
     const replace = "";
 
     return text.normalize("NFD").replaceAll(search, replace);
   }
 
+  /**
+   * Initializes notes state by retrieving the notes from localStorage.
+   * @returns Array of note objects or empty array
+   */
   function initializeNotes() { 
     return JSON.parse(localStorage.getItem("notes")) || [];
   }
 
+  //State
   const [notes, setNotes] = React.useState(initializeNotes)
-  const [currentNote, setCurrentNote] = React.useState(notes[0] || {id: "", title: "", body: ""})
+  const [currentNote, setCurrentNote] = React.useState(notes[0] || { id: "", title: "", body: "" })
+  
+  //Callback functions to be passed as props
   const callbacks = {
     createNewNote,
     deleteNote,
@@ -96,10 +131,14 @@ export default function App() {
     updateNote
   }
 
+  /**
+   * Stores notes in localStorage.
+   */
   React.useEffect(() => { 
     localStorage.setItem("notes", JSON.stringify(notes));
   }, [notes, currentNote]);
 
+  //Render
   return (
     <div className="App">
       {//=================== TODO
