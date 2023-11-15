@@ -37,19 +37,14 @@ export default function App() {
    * Deletes a note and, if the deleted note is the current note, changes the current note to the first note in the notes state.
    * @param {*} noteIndex The index of the note object to be deleted.
    */
-  function deleteNote(noteIndex) { 
+  function deleteNote(note) { 
     setNotes(currentState => { 
-      let newState = [];
+      let newState = [...currentState];
 
-      currentState.forEach((note, index) => {
+      newState = newState.filter(n => n.id !== note.id);
 
-        if (index !== noteIndex) {
-          newState.push(note);
-        }
-      });
-
-      if (isCurrentNote(notes[noteIndex])) { 
-        updateCurrentNote(newState[0] || {id: -1, body:""});
+      if (isCurrentNote(note)) { 
+        updateCurrentNote(newState[0] || {id: "", body:"", title: ""});
       }
 
       return newState;
@@ -80,7 +75,7 @@ export default function App() {
    * @returns Boolean
    */
   function isCurrentNote(note) { 
-    return note === currentNote;
+    return note === getCurrentNote();
   }
 
   /**

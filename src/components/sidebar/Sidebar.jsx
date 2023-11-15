@@ -41,7 +41,7 @@ export default function Sidebar(props) {
                             <button
                                     className="bi-trash d-flex align-items-center"
                                     onClick={() => {
-                                        return props.callbacks.deleteNote(index);
+                                        return props.callbacks.deleteNote(note);
                                     } }
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
