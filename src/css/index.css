@@ -8,8 +8,8 @@
 
 .bi-trash {
   border: none;
-  color: #fff;
   background-color: transparent;
+  color: inherit;
   transition: color .1s;
 }
 

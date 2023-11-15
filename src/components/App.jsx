@@ -88,7 +88,7 @@ export default function App() {
   }
 
   const [notes, setNotes] = React.useState(initializeNotes)
-  const [currentNote, setCurrentNote] = React.useState(notes[0] || {})
+  const [currentNote, setCurrentNote] = React.useState(notes[0] || {id: "", title: "", body: ""})
   const callbacks = {
     createNewNote,
     deleteNote,
@@ -113,7 +113,7 @@ export default function App() {
           sizes={[10, 90]}
         >
           <aside className='App-sidebar'>
-            <Sidebar notes={notes} callbacks={ callbacks } />
+            <Sidebar notes={notes} currentNote={currentNote} callbacks={ callbacks } />
           </aside>
           <main className='App-main'>
             {

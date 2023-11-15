@@ -22,7 +22,11 @@ export default function Sidebar(props) {
                     return (
                         <div
                             key={index}
-                            className="Sidebar-note bg-primary"
+                            className={`Sidebar-note ${
+                                props.currentNote.id === note.id
+                                ? "highlighted-note"
+                                : "non-highlighted-note"
+                            }` }
                         >
                             <div
                                 className='container-sm d-flex align-items-center justify-content-between clickable'

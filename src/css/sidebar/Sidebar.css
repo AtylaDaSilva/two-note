@@ -29,8 +29,19 @@
     padding: 0px 20px 0px 20px;
 }
 
+.highlighted-note {
+    background-color: var(--bs-primary);
+    border: none;
+    color: var(--bs-white);
+}
+
+.non-highlighted-note {
+    background-color: var(--bs-white);
+    border: 1px solid var(--bs-primary);
+    color: var(--bs-primary);
+}
+
 .note-title {
     font-weight: bold;
     font-size: 1.1rem;
-    color: #fff;
 }
