@@ -19,6 +19,10 @@
     margin-left: 10px;
 }
 
+.note-container {
+    height: 90vh;
+}
+
 .Sidebar-note {
     display: flex;
     justify-content: flex-start;

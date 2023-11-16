@@ -19,7 +19,7 @@ export default function Sidebar(props) {
                     onClick={ props.callbacks.createNewNote }
                 > + </Button>
             </div>
-            <div className="Siderbar-note-container">
+            <div className="note-container overflow-y-auto">
                 {props.notes.map((note, index) => {
                     return (
                         <div
