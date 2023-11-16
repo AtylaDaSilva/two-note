@@ -10,12 +10,12 @@ import '../../css/sidebar/Sidebar.css';
 //Render
 export default function Sidebar(props) {
     return (
-        <div className="Sidebar">
-            <div className="Sidebar-header">
-                <h2 className='Sidebar-title'>Notes</h2>
+        <div className="Sidebar h-100 pt-4">
+            <div className="d-flex justify-content-center align-items-center">
+                <h2 className='fs-2 fw-bold'>Notes</h2>
                 <Button
                     variant='primary'
-                    className='add-note-btn'
+                    className='ms-2'
                     onClick={ props.callbacks.createNewNote }
                 > + </Button>
             </div>
@@ -24,7 +24,8 @@ export default function Sidebar(props) {
                     return (
                         <div
                             key={index}
-                            className={`Sidebar-note ${
+                            className={`Sidebar-note d-flex flex-row align-items-center my-2 pe-2
+                            ${
                                 props.currentNote.id === note.id
                                 ? "highlighted-note"
                                 : "non-highlighted-note"
@@ -36,7 +37,7 @@ export default function Sidebar(props) {
                                     return props.callbacks.updateCurrentNote(note);
                                 } }
                             >
-                                <h3 className='note-title'>{note.title}</h3>
+                                <h3 className='fw-bold fs-6'>{note.title}</h3>
                             </div>
                             <button
                                     className="bi-trash d-flex align-items-center"

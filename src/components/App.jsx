@@ -135,21 +135,21 @@ export default function App() {
 
   //Render
   return (
-    <div className="App">
+    <div className="App d-flex flex-column">
       {//=================== TODO
       /*<header className='App-header'>
         <Toolbar />
       </header>*/
       }
-      <div className='App-body'>
+      <div className='App-body d-flex justify-content-start flex-grow-1'>
         <Split
           className='split'
           sizes={[10, 90]}
         >
-          <aside className='App-sidebar'>
+          <aside className='App-sidebar h-100'>
             <Sidebar notes={notes} currentNote={currentNote} callbacks={ callbacks } />
           </aside>
-          <main className='App-main'>
+          <main className='App-main h-100 flex-grow-1'>
             {
               (notes.length > 0)
                 ? <Editor currentNote={currentNote} callbacks={callbacks} />
